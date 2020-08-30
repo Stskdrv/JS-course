@@ -9,10 +9,33 @@ var personalMovieDB = {
   genres: [],
   privat: false
 };
-var a = prompt('Последний просмотренный фильм?', ''),
-    b = prompt('Насколько из 10 его оцените?', ''),
-    c = prompt('Последний просмотренный фильм?', ''),
-    d = prompt('Насколько из 10 его оцените?', '');
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+
+if (personalMovieDB.count < 10) {
+  alert('Просмотрено слишкм мало фильмов');
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
+  alert('Вы классический зритель');
+} else if (personalMovieDB.count > 30) {
+  alert('Вы киноман');
+} else {
+  alert('ошибка');
+}
+
+var i = 0;
+
+while (i < 2) {
+  // выводит 0, затем 1, затем 2
+  var a = prompt('Последний просмотренный фильм?', ''),
+      b = prompt('Насколько из 10 его оцените?', '');
+
+  if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+    personalMovieDB.movies[a] = b;
+    console.log('done');
+  } else {
+    console.log('error');
+    i--;
+  }
+
+  i++;
+}
+
 console.log(personalMovieDB);
